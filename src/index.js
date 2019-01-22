@@ -48,7 +48,7 @@ function toThemeMap(basePath, filename) {
 
 const rootPath = hexo.config.root || '/';
 const prismLineNumbersPluginDir = dirResolve('prismjs/plugins/line-numbers');
-const prismComponents = dirResolve('prismjs/components');
+const prismComponentTypescript = dirResolve('prismjs/components/prism-typescript.min.js');
 const prismThemeDir = dirResolve('prismjs/themes');
 const extraThemeDir = dirResolve('prism-themes/themes');
 const prismMainFile = require.resolve('prismjs');
@@ -150,7 +150,7 @@ function copyAssets() {
     });
     assets.push({
       path: 'js/prism-typescript.min.js',
-      data: () => fs.createReadStream(path.join(prismComponents, 'prism-typescript.min.js'))
+      data: () => fs.createReadStream(prismComponentTypescript)
     });
     if (line_number) {
       assets.push({
