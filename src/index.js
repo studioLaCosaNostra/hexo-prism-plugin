@@ -179,6 +179,7 @@ function importAssets(code, data) {
   }
   if (mode === 'realtime') {
     js.push(`<script src="${rootPath}js/prism.js"></script>`);
+    js.push(`<script src="${rootPath}js/prism-typescript.min.js"></script>`);
     if (line_number) {
       js.push(`<script src="${rootPath}js/prism-line-numbers.min.js"></script>`);
     }
