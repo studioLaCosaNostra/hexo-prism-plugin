@@ -3,27 +3,17 @@
 const fs = require('fs');
 const path = require('path');
 
-function uniq(arr) {
-  const set = arr.reduce((set, item) => {
-    set[item] = true;
-    return set;
-  }, {});
-  return Object.keys(set);
-}
-
-const prismCore = 'prismjs/components/prism-core';
-const Prism = require(prismCore);
-
-const prelude = [
-  'prism-clike', 'prism-markup', 'prism-javascript',
-  'prism-c', 'prism-ruby', 'prism-css', 'prism-typescript'
-];
-const prismComponents = path.dirname(require.resolve(prismCore));
-const components = prelude.concat(fs.readdirSync(prismComponents))
-  .map((component) => component.replace(/(\.min)?\.js$/, ''));
-
-const componentsSet = uniq(components);
-componentsSet
-  .forEach((component) => require(path.join(prismComponents, component)));
+const Prism = require('prismjs');
+const components = require('prismjs/components/index');
+components([
+  'c',
+  'cpp',
+  'clike',
+  'ruby',
+  'markup',
+  'javascript',
+  'css',
+  'typescript'
+])
 
 module.exports = Prism;
