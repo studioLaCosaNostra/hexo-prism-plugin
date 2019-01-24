@@ -2,7 +2,7 @@
 
 const fs = require('hexo-fs');
 const path = require('path');
-const Prism = require('node-prismjs');
+const Prism = require('./node-prism');
 const dirResolve = require('dir-resolve');
 
 const map = {
