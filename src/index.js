@@ -171,11 +171,11 @@ function copyAssets() {
 function importAssets(code, data) {
   const js = [];
   const css = [
-    `<link rel="stylesheet" href="${rootPath}css/${prismThemeFileName}" type="text/css">`
+    `${rootPath}css/${prismThemeFileName}`
   ];
 
   if (line_number && custom_css === null) {
-    css.push(`<link rel="stylesheet" href="${rootPath}css/prism-line-numbers.css" type="text/css">`);
+    css.push(`${rootPath}css/prism-line-numbers.css`);
   }
   if (mode === 'realtime') {
     js.push(`<script src="${rootPath}js/prism.js"></script>`);
@@ -184,7 +184,7 @@ function importAssets(code, data) {
       js.push(`<script src="${rootPath}js/prism-line-numbers.min.js"></script>`);
     }
   }
-  const imports = css.join('\n') + js.join('\n');
+  const imports = this.extend.helper.get('css').bind(this)(css);
 
   // Avoid duplicates
   if (code.indexOf(imports) > -1) {
